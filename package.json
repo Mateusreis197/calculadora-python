@@ -1,0 +1,16 @@
+{
+    "name": "calculadora-python",
+    "version": "1.0.0",
+    "description": "Calculadora em Python com arquitetura modular e testes unitários",
+    "main": "calculadora_python.py",
+    "scripts": {
+      "start": "python calculadora_python.py",
+      "test": "python -m unittest test_calculadora.py"
+    },
+    "author": "Mateusreis197",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Mateusreis197/calculadora-python.git"
+    }
+  }
