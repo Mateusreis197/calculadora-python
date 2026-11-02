@@ -21,15 +21,20 @@ def dividir(a, b):
         raise ValueError("Não é possível dividir por zero.")
     return a / b
 
+def porcentagem(valor, percentual):
+    """Calcula quanto é 'percentual'% de 'valor'. Ex.: 20% de 150 = 30."""
+    return valor * percentual / 100
+
 def exibir_menu():
     print("=" * 36)
     print(f"       {APP_NAME.upper()}       ")
-    print("       Autor: Mateusreis197        ")
+    print("       Autor: Mateus Reis        ")
     print("=" * 36)
     print("1 - Adição (+)")
     print("2 - Subtração (-)")
     print("3 - Multiplicação (*)")
     print("4 - Divisão (/)")
+    print("5 - Porcentagem (X% de Y)")
     print("0 - Sair")
     print("=" * 36)
 
@@ -42,10 +47,14 @@ def main():
             print("\nEncerrando a calculadora. Até mais!")
             break
 
-        if opcao in ['1', '2', '3', '4']:
+        if opcao in ['1', '2', '3', '4', '5']:
             try:
-                num1 = float(input("Digite o primeiro número: "))
-                num2 = float(input("Digite o segundo número: "))
+                if opcao == '5':
+                    num1 = float(input("Digite a porcentagem (ex.: 20): "))
+                    num2 = float(input("Digite o valor (ex.: 150): "))
+                else:
+                    num1 = float(input("Digite o primeiro número: "))
+                    num2 = float(input("Digite o segundo número: "))
 
                 if opcao == '1':
                     resultado = somar(num1, num2)
@@ -59,13 +68,16 @@ def main():
                 elif opcao == '4':
                     resultado = dividir(num1, num2)
                     simbolo = "/"
+                elif opcao == '5':
+                    resultado = porcentagem(num2, num1)
+                    simbolo = "% de"
 
                 print(f"\n=> Resultado: {num1} {simbolo} {num2} = {round(resultado, PRECISAO)}\n")
 
             except ValueError as erro:
                 print(f"\n[Aviso] Entrada inválida ou erro matemático: {erro}\n")
         else:
-            print("\n[Opção Inválida] Escolha um número de 0 a 4.\n")
+            print("\n[Opção Inválida] Escolha um número de 0 a 5.\n")
 
 if __name__ == "__main__":
     main()
